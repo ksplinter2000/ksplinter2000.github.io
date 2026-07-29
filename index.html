@@ -1,5 +1,6 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
+<script src="https://cloudflare.com"></script>
 <style> circle {fill: lightblue; stroke: black;} </style>
 <body onload='init()'>
 <svg width=1200 height=900>
@@ -17,6 +18,25 @@ const y = d3.scaleLog()
  .domain([10,150])
  .range([600,0]);
 
+ const annotations = [
+  {
+    note: {
+      label: "Detailed background info goes here.",
+      title: "Annotation Title",
+      wrap: 150,  // Automatically wraps text at 150px
+      padding: 10
+    },
+    // The target coordinate on the chart
+    x: 250, 
+    y: 180,
+    // The offset distance for the text box
+    dx: 50,  
+    dy: -50
+  }
+];
+
+const makeAnnotations = d3.annotation()
+  .annotations(annotations);
 
 d3.select('svg')
  .append('g')
@@ -70,7 +90,10 @@ d3.select('svg')
  .attr("transform","translate(450,750)")
  .call(xAxis);
 
-svg.call(zoom.transform, d3.zoomIdentity)
+d3.select("svg")
+  .append("g")
+  .attr("class", "annotation-group")
+  .call(makeAnnotations);
 
 }
 </script>
