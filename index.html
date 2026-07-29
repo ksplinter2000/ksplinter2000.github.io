@@ -18,24 +18,6 @@ const y = d3.scaleLog()
  .domain([10,150])
  .range([600,0]);
 
-const annotations = [
-  {
-    note: {
-      label: "Here is the annotation label",
-      title: "Annotation title"
-    },
-    x: 100,
-    y: 100,
-    dy: 100,
-    dx: 100
-  }
-];
-
-const makeAnnotations = d3.annotation()
- .annotations(annotations);
-d3.select("svg")
- .append("g")
- .call(makeAnnotations);
 
 d3.select('svg')
  .append('g')
