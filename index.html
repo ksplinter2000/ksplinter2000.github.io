@@ -18,6 +18,21 @@ const y = d3.scaleLog()
  .domain([10,150])
  .range([600,0]);
 
+const annotations = [{
+  note: { title: 'Peak', label: 'Highest point' },
+  x: 150,
+  y: 80,
+  dx: 40,
+  dy: -40,
+  subject: { radius: 10 }
+}];
+
+const makeAnnotations = d3.annotation()
+  .annotations(annotations);
+
+d3.select('svg')
+  .append('g')
+  .call(makeAnnotations);
 
 d3.select('svg')
  .append('g')
@@ -77,21 +92,7 @@ d3.select('svg')
  .attr("transform","translate(450,750)")
  .call(xAxis);
 
-const annotations = [{
-  note: { title: "Peak", label: "Highest point" },
-  x: 150,
-  y: 80,
-  dx: 40,
-  dy: -40,
-  subject: { radius: 10 }
-}];
 
-const makeAnnotations = d3.annotation()
-  .annotations(annotations);
-
-d3.select("svg")
-  .append("g")
-  .call(makeAnnotations);
 
 
 }
