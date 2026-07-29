@@ -70,6 +70,7 @@ d3.select('svg')
  .attr("transform","translate(450,750)")
  .call(xAxis);
 
+svg.call(zoom.transform, d3.zoomIdentity)
 
 }
 </script>
