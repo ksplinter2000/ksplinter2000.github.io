@@ -98,7 +98,7 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(d3.mean(eData, d => d.AverageCityMPG))})
    .attr("cy", function(d,i) {return y(d3.mean(eData, d => d.AverageHighwayMPG))})
    .attr("r", function(d,i) {return 2+Number((d3.mean(eData, d => d.EngineCylinders)))})
-   .style("fill", "yellow");
+   .style("fill", "red");
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
