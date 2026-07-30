@@ -25,8 +25,8 @@ const annotations = [{
     title: "First Annotation"
   },
   //can use x, y directly instead of data
-  x: x(d3.mean(eData, d => d.AverageCityMPG)),
-  y: y(d3.mean(eData, d => d.AverageHighwayMPG)),
+  x: 450 + x(d3.mean(eData, d => d.AverageCityMPG)),
+  y: 150 + y(d3.mean(eData, d => d.AverageHighwayMPG)),
   dy: 137,
   dx: 162
 },
@@ -37,8 +37,8 @@ const annotations = [{
     title: "Second Annotation"
   },
   //can use x, y directly instead of data
-  x: x(d3.mean(gData, d => d.AverageCityMPG)),
-  y: y(d3.mean(gData, d => d.AverageHighwayMPG)),
+  x: 450 + x(d3.mean(gData, d => d.AverageCityMPG)),
+  y: 150 + y(d3.mean(gData, d => d.AverageHighwayMPG)),
   dy: 137,
   dx: 162
 },
@@ -49,8 +49,8 @@ const annotations = [{
     title: "Third Annotation"
   },
   //can use x, y directly instead of data
-  x: x(d3.mean(dData, d => d.AverageCityMPG)),
-  y: y(d3.mean(dData, d => d.AverageHighwayMPG)),
+  x: 450 + x(d3.mean(dData, d => d.AverageCityMPG)),
+  y: 150 + y(d3.mean(dData, d => d.AverageHighwayMPG)),
   dy: 87,
   dx: 142
 }                     
