@@ -83,12 +83,22 @@ d3.select('svg')
  .attr("transform","translate(450,150)")
  .call(yAxis);
 
+d3.select('svg')
+ .append('g')
+  .attr("transform","translate(400,150) rotate(-90)")
+  .text('Y-Axis Label')
+
 const xAxis = d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
 d3.select('svg')
 .append('g')
  .attr("transform","translate(450,750)")
  .call(xAxis);
+
+d3.select('svg')
+ .append('g')
+  .attr("transform","translate(450,800)")
+  .text('X-Axis Label')
 
 }
 </script>
