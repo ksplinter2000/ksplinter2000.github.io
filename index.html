@@ -18,42 +18,59 @@ const y = d3.scaleLog()
  .domain([10,150])
  .range([600,0]);
 
+const greatestACMPG = d3.greatest(data, d => d.AverageCityMPG);
+const leastACMPG = d3.least(data, d => d.AverageCityMPG);
+const greatestCyl = d3.greatest(data, d => d.EngineCylinders);
+const leastCyl = d3.least(data, d => d.EngineCylinders);
+
 const annotations = [{
   note: {
-    label: "Its electric",
+    label: "Max AverageCityMPG",
     bgPadding: 20,
     title: "First Annotation"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(eData, d => d.AverageCityMPG)),
-  y: 150 + y(d3.mean(eData, d => d.AverageHighwayMPG)),
+  x: 450 + x(greatestACMPG.AverageCityMPG),
+  y: 150 + y(greatestACMPG.AverageHighwayMPG)),
   dy: 137,
   dx: 0
 },
 {
   note: {
-    label: "Its Gas",
+    label: "Min AverageCityMPG",
     bgPadding: 20,
     title: "Second Annotation"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(gData, d => d.AverageCityMPG)),
-  y: 150 + y(d3.mean(gData, d => d.AverageHighwayMPG)),
+  x: 450 + x(leastACMPG.AverageCityMPG),
+  y: 150 + y(leastACMPG.AverageHighwayMPG)),
   dy: 137,
   dx: 162
 },
 {
   note: {
-    label: "Its diesel",
+    label: "Most Cylinders",
     bgPadding: 20,
     title: "Third Annotation"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(dData, d => d.AverageCityMPG)),
-  y: 150 + y(d3.mean(dData, d => d.AverageHighwayMPG)),
+  x: 450 + x(greatestCyl.AverageCityMPG),
+  y: 150 + y(greatestCyl.AverageHighwayMPG)),
   dy: 87,
   dx: 142
-}                     
+}, 
+{
+  note: {
+    label: "Most Cylinders",
+    bgPadding: 20,
+    title: "Third Annotation"
+  },
+  //can use x, y directly instead of data
+  x: 450 + x(leastCyl.AverageCityMPG),
+  y: 150 + y(leastCyl.AverageHighwayMPG)),
+  dy: 87,
+  dx: 142
+}  
 ];
 
 const makeAnnotations = d3.annotation()
@@ -73,32 +90,6 @@ d3.select('svg')
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
    .attr("r", function(d,i) {return 2+Number((d.EngineCylinders))});
 
- d3.select('svg')
- .append('g')
-  .attr("transform","translate(450,150)")
-  .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(gData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(gData, d => d.AverageHighwayMPG))})
-   .attr("r", function(d,i) {return 2+Number((d3.mean(gData, d => d.EngineCylinders)))})
-   .style("fill", "green");
-
-  d3.select('svg')
- .append('g')
-  .attr("transform","translate(450,150)")
-  .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(dData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(dData, d => d.AverageHighwayMPG))})
-   .attr("r", function(d,i) {return 2+Number((d3.mean(dData, d => d.EngineCylinders)))})
-   .style("fill", "black");
-
-  d3.select('svg')
- .append('g')
-  .attr("transform","translate(450,150)")
-  .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(eData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(eData, d => d.AverageHighwayMPG))})
-   .attr("r", function(d,i) {return 2+Number((d3.mean(eData, d => d.EngineCylinders)))})
-   .style("fill", "red");
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
