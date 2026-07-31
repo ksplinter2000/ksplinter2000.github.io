@@ -19,10 +19,6 @@ const y = d3.scaleLog()
  .domain([10,150])
  .range([600,0]);
 
-const greatestACMPG = d3.greatest(data, d => d.AverageCityMPG);
-const leastACMPG = d3.least(data, d => d.AverageCityMPG);
-const greatestCyl = d3.greatest(data, d => d.EngineCylinders);
-const leastCyl = d3.least(data, d => d.EngineCylinders);
 
 const annotations = [{
   note: {
