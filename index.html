@@ -74,32 +74,6 @@ d3.select('svg')
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
    .attr("r", function(d,i) {return 2+Number((d.EngineCylinders))});
 
- d3.select('svg')
- .append('g')
-  .attr("transform","translate(450,150)")
-  .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(gData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(gData, d => d.AverageHighwayMPG))})
-   .attr("r", function(d,i) {return 2+Number((d3.mean(gData, d => d.EngineCylinders)))})
-   .style("fill", "green");
-
-  d3.select('svg')
- .append('g')
-  .attr("transform","translate(450,150)")
-  .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(dData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(dData, d => d.AverageHighwayMPG))})
-   .attr("r", function(d,i) {return 2+Number((d3.mean(dData, d => d.EngineCylinders)))})
-   .style("fill", "black");
-
-  d3.select('svg')
- .append('g')
-  .attr("transform","translate(450,150)")
-  .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(eData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(eData, d => d.AverageHighwayMPG))})
-   .attr("r", function(d,i) {return 2+Number((d3.mean(eData, d => d.EngineCylinders)))})
-   .style("fill", "red");
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
