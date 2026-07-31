@@ -34,7 +34,7 @@ const annotations = [{
 },
 {
   note: {
-    label: "Its Gas",
+    label: "We have updated axis-text",
     bgPadding: 20,
     title: "Second Annotation"
   },
@@ -46,7 +46,7 @@ const annotations = [{
 },
 {
   note: {
-    label: "Its diesel",
+    label: "We have updated axis-text",
     bgPadding: 20,
     title: "Third Annotation"
   },
@@ -84,9 +84,11 @@ d3.select('svg')
  .call(yAxis);
 
 d3.select('svg')
- .append('g')
+ .append('text')
   .attr("transform","rotate(-90)")
-  .text('Y-Axis Label')
+  .attr("x", 400)
+  .attr("y", 150)
+  .text("Y-axis Label)
 
 const xAxis = d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
@@ -96,8 +98,10 @@ d3.select('svg')
  .call(xAxis);
 
 d3.select('svg')
- .append('g')
-  .text('X-Axis Label')
+ .append('text')
+  .attr("x", 450)
+  .attr("y", 800)
+  .text("X-Axis Label")
 
 }
 </script>
