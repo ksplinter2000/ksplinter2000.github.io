@@ -20,8 +20,6 @@ const y = d3.scaleLog()
 
 const greatestACMPG = d3.greatest(data, d => d.AverageCityMPG);
 const leastACMPG = d3.least(data, d => d.AverageCityMPG);
-const greatestCyl = d3.greatest(data, d => d.EngineCylinders);
-const leastCyl = d3.least(data, d => d.EngineCylinders);
 
 const annotations = [{
   note: {
@@ -32,7 +30,7 @@ const annotations = [{
   //can use x, y directly instead of data
   x: 450 + x(greatestACMPG.AverageCityMPG),
   y: 150 + y(greatestACMPG.AverageHighwayMPG),
-  dy: 137,
+  dy: 0,
   dx: 0
 },
 {
@@ -44,33 +42,9 @@ const annotations = [{
   //can use x, y directly instead of data
   x: 450 + x(leastACMPG.AverageCityMPG),
   y: 150 + y(leastACMPG.AverageHighwayMPG),
-  dy: 137,
-  dx: 162
-},
-{
-  note: {
-    label: "Most Cylinders",
-    bgPadding: 20,
-    title: "Third Annotation"
-  },
-  //can use x, y directly instead of data
-  x: 450 + x(greatestCyl.AverageCityMPG),
-  y: 150 + y(greatestCyl.AverageHighwayMPG),
-  dy: 87,
-  dx: 142
-}, 
-{
-  note: {
-    label: "Most Cylinders",
-    bgPadding: 20,
-    title: "Third Annotation"
-  },
-  //can use x, y directly instead of data
-  x: 450 + x(leastCyl.AverageCityMPG),
-  y: 150 + y(leastCyl.AverageHighwayMPG),
-  dy: 87,
-  dx: 142
-}  
+  dy: 0,
+  dx: 0
+} 
 ];
 
 const makeAnnotations = d3.annotation()
