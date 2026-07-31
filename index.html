@@ -27,32 +27,32 @@ const annotations = [{
     title: "0 Cylinder Enginges"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(eData, d => d.AverageCityMPG)),
-  y: 150 + y(d3.mean(eData, d => d.AverageHighwayMPG)),
+  x: 1000,
+  y: 200,
   dy: 137,
   dx: 0
 },
 {
   note: {
-    label: "Its Gas",
+    label: "middle",
     bgPadding: 20,
     title: "Second Annotation"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(gData, d => d.AverageCityMPG)),
-  y: 150 + y(d3.mean(gData, d => d.AverageHighwayMPG)),
+  x: 700,
+  y: 500,
   dy: 137,
   dx: 162
 },
 {
   note: {
-    label: "Its diesel",
+    label: "Bottom left",
     bgPadding: 20,
     title: "Third Annotation"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(dData, d => d.AverageCityMPG)),
-  y: 150 + y(d3.mean(dData, d => d.AverageHighwayMPG)),
+  x: 500,
+  y: 700,
   dy: 87,
   dx: 142
 }                     
@@ -83,10 +83,7 @@ d3.select('svg')
  .attr("transform","translate(450,150)")
  .call(yAxis);
 
-d3.select('svg')
- .append('g')
-  .attr("transform","rotate(-90)")
-  .text('Y-Axis Label')
+
 
 const xAxis = d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
@@ -95,9 +92,7 @@ d3.select('svg')
  .attr("transform","translate(450,750)")
  .call(xAxis);
 
-d3.select('svg')
- .append('g')
-  .text('X-Axis Label')
+
 
 }
 </script>
