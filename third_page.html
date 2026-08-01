@@ -3,12 +3,16 @@
 <style> circle {fill: lightblue; stroke: black;} </style>
 <body onload='init()'>
   <h1> THIS IS THE THIRD PAGE</h1>
-  
-<svg width=900 height=900>
+  <a href="third_page.html">Go to Third Page</a>
+ <p><br></p>
+<svg width=1200 height=800>
 </svg>
 <script>
 async function init() {
  const data = await d3.csv('https://flunky.github.io/cars2017.csv');
+ const gData = data.filter(d => d.Fuel === 'Gasoline');
+ const dData = data.filter(d => d.Fuel === 'Diesel');
+ const eData = data.filter(d => d.Fuel === 'Electricity');
 const x = d3.scaleLog()
  .domain([10,150])
  .range([0,600]);
@@ -17,33 +21,110 @@ const y = d3.scaleLog()
  .range([600,0]);
 
 
+
 d3.select('svg')
  .append('g')
-  .attr("transform","translate(150,150)")
+  .attr("transform","translate(450,50)")
   .selectAll("circle")
   .data(data)
   .enter()
   .append("circle")
    .attr("cx", function(d,i) {return x(d.AverageCityMPG)})
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
-   .attr("r", function(d,i) {return 2+Number((d.EngineCylinders))});
+   .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))});
+
+ d3.select('svg')
+ .append('g')
+  .attr("transform","translate(450,50)")
+  .append("circle")
+   .attr("cx", function(d,i) {return x(d3.mean(gData, d => d.AverageCityMPG))})
+   .attr("cy", function(d,i) {return y(d3.mean(gData, d => d.AverageHighwayMPG))})
+   .attr("r", function(d,i) {return 4+(2*Number((d3.mean(gData, d => d.EngineCylinders))))})
+   .style("fill", "green");
+
+  d3.select('svg')
+ .append('g')
+  .attr("transform","translate(450,50)")
+  .append("circle")
+   .attr("cx", function(d,i) {return x(d3.mean(dData, d => d.AverageCityMPG))})
+   .attr("cy", function(d,i) {return y(d3.mean(dData, d => d.AverageHighwayMPG))})
+   .attr("r", function(d,i) {return 4+(2*Number((d3.mean(dData, d => d.EngineCylinders))))})
+   .style("fill", "black");
+
+  d3.select('svg')
+ .append('g')
+  .attr("transform","translate(450,50)")
+  .append("circle")
+   .attr("cx", function(d,i) {return x(d3.mean(eData, d => d.AverageCityMPG))})
+   .attr("cy", function(d,i) {return y(d3.mean(eData, d => d.AverageHighwayMPG))})
+   .attr("r", function(d,i) {return 4+(2*Number((d3.mean(eData, d => d.EngineCylinders))))})
+   .style("fill", "red");
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
 d3.select('svg')
 .append('g')
- .attr("transform","translate(150,150)")
+ .attr("transform","translate(450,50)")
  .call(yAxis);
 
 const xAxis = d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
 d3.select('svg')
 .append('g')
- .attr("transform","translate(150,750)")
+ .attr("transform","translate(450,650)")
  .call(xAxis);
 
 
+
+const annotations = [{
+  note: {
+    label: "Substantially Higher Efficency than Other Fuels",
+    bgPadding: 20,
+    wrap: 200,
+    title: "Average Electric Motor"
+  },
+  //can use x, y directly instead of data
+  x: 450 + x(d3.mean(eData, d => d.AverageCityMPG)),
+  y: 50 + y(d3.mean(eData, d => d.AverageHighwayMPG)),
+  dy: 80,
+  dx: 0
+},
+{
+  note: {
+    label: "Lowest Efficiency Across Fuel Types",
+    bgPadding: 20,
+    wrap: 200,
+    title: "Average Gas Motor"
+  },
+  //can use x, y directly instead of data
+  x: 450 + x(d3.mean(gData, d => d.AverageCityMPG)),
+  y: 50 + y(d3.mean(gData, d => d.AverageHighwayMPG)),
+  dy: 137,
+  dx: 80
+},
+{
+  note: {
+    label: "More Efficient than Gasoline, but Far Below Electric",
+    bgPadding: 20,
+    wrap: 200,
+    title: "Average Diesel Motor"
+  },
+  //can use x, y directly instead of data
+  x: 450 + x(d3.mean(dData, d => d.AverageCityMPG)),
+  y: 50 + y(d3.mean(dData, d => d.AverageHighwayMPG)),
+  dy: 30,
+  dx: 120
+}                     
+];
+
+const makeAnnotations = d3.annotation()
+  .annotations(annotations);
+d3.select("svg")
+  .append("g")
+  .call(makeAnnotations)
+
 }
 </script>
+
 </body>
 </html>
