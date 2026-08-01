@@ -34,7 +34,9 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(d.AverageCityMPG)})
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
    .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
-   .style("fill", "green");
+   .style("fill", "green")
+   .append("title")
+   .text(d => `Make: ${d.Make}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
 
 d3.select('svg')
  .append('g')
@@ -46,7 +48,9 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(d.AverageCityMPG)})
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
    .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
-   .style("fill", "grey");
+   .style("fill", "grey")
+   .append("title")
+   .text(d => `Make: ${d.Make}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
 
   
 d3.select('svg')
@@ -59,7 +63,9 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(d.AverageCityMPG)})
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
    .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
-   .style("fill", "red");
+   .style("fill", "red")
+   .append("title")
+   .text(d => `Make: ${d.Make}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
 
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
