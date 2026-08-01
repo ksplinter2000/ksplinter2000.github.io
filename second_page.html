@@ -65,7 +65,7 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(dCity)})
    .attr("cy", function(d,i) {return y(dHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(dData, d => d.EngineCylinders))))})
-   .style("fill", "black")
+   .style("fill", "grey")
    .append("title")
    .text(d => `Fuel: Diesel   City: ${dCity}   Highway: ${dHighway}`)
    ;
