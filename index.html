@@ -36,7 +36,7 @@ d3.select('svg')
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
    .attr("r", function(d,i) {return 4+2*Number((d.EngineCylinders))})
    .append("title")
-   .text(d => `Value: ${d.Make}`)
+   .text(d => `Make: ${d.Make}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`)
  ;
 
 
