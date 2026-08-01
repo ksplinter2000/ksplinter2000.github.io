@@ -78,7 +78,7 @@ d3.select('svg')
   .append("circle")
    .attr("cx", function(d,i) {return x(d.AverageCityMPG)})
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
-   .attr("r", function(d,i) {return 2+Number((d.EngineCylinders))});
+   .attr("r", function(d,i) {return 4+Number((d.EngineCylinders))});
 
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
