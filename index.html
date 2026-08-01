@@ -123,25 +123,14 @@ d3.select("svg")
 
 //////// BUTTON ///////////////////////
 
- const svgButton = svg.append("g")
-  .style("cursor", "pointer") // Makes it look clickable
+d3.select('svg')
+ .append("button")
+  .attr("transform", "translate(50, 50)")
+  .text("Go to Second Slide")
   .on("click", function() {
-    window.location.href = "second_page.html";
+    // Redirects the current tab to the new page
+    window.location.href = "second_page.html"; 
   });
-
-// Draw the button background
-svgButton.append("rect")
-  .attr("width", 120)
-  .attr("height", 40)
-  .attr("fill", "#007bff");
-
-// Add the button text
-svgButton.append("text")
-  .attr("x", 60)
-  .attr("y", 25)
-  .attr("text-anchor", "middle")
-  .attr("fill", "white")
-  .text("Navigate to Second Slide");
 
 }
 </script>
