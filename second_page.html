@@ -23,9 +23,10 @@ const y = d3.scaleLog()
 
 const annotations = [{
   note: {
-    label: "Its electric",
+    label: "Substantially Higher Efficency than Other Fuels",
     bgPadding: 20,
-    title: "First Annotation"
+    wrap: 200,
+    title: "Average Electric Motor"
   },
   //can use x, y directly instead of data
   x: 450 + x(d3.mean(eData, d => d.AverageCityMPG)),
@@ -35,9 +36,10 @@ const annotations = [{
 },
 {
   note: {
-    label: "Its Gas",
+    label: "Lowest Efficiency Across Fuel Types",
     bgPadding: 20,
-    title: "Second Annotation"
+    wrap: 200,
+    title: "Average Gas Motor"
   },
   //can use x, y directly instead of data
   x: 450 + x(d3.mean(gData, d => d.AverageCityMPG)),
@@ -47,9 +49,10 @@ const annotations = [{
 },
 {
   note: {
-    label: "Its diesel",
+    label: "More Efficient than Gasoline, but Far Below Electric",
     bgPadding: 20,
-    title: "Third Annotation"
+    wrap: 200,
+    title: "Average Diesel Motor"
   },
   //can use x, y directly instead of data
   x: 450 + x(d3.mean(dData, d => d.AverageCityMPG)),
