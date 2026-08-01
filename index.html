@@ -22,21 +22,21 @@ const y = d3.scaleLog()
 
 const annotations = [{
   note: {
-    label: "Engines with fewer cylinders tend to have higher MPG",
+    label: "City MPG: 150    Highway MPG: 122",
     bgPadding: 20,
-    title: "0 Cylinder Enginges"
+    title: "Hyundai Electric"
   },
   //can use x, y directly instead of data
-  x: 1000,
-  y: 250,
+  x: 450 + x(150),
+  y: 150 + y(122),
   dy: 137,
   dx: 0
 },
 {
   note: {
-    label: "middle",
+    label: "More cylinders: larger circle",
     bgPadding: 20,
-    title: "Second Annotation"
+    title: "Engine Cylinder Count"
   },
   //can use x, y directly instead of data
   x: 700,
@@ -46,13 +46,13 @@ const annotations = [{
 },
 {
   note: {
-    label: "Bottom left",
+    label: "City: 10 Highway: 17",
     bgPadding: 20,
-    title: "Third Annotation"
+    title: "Lamborghini Gasoline"
   },
   //can use x, y directly instead of data
-  x: 500,
-  y: 600,
+  x: 450 + x(10),
+  y: 150 + y(17),
   dy: 87,
   dx: 142
 }                     
@@ -97,7 +97,6 @@ d3.select('svg')
     .attr("text-anchor", "end")
     .attr("x", 325)
     .attr("y", 600)
-    .attr("transform", "rotate(-90)")
     .text("Average Miles Per Gallon (Highway Driving)");
 
 const xAxis = d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
