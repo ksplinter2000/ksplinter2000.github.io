@@ -25,12 +25,12 @@ const y = d3.scaleLog()
  .range([600,0]);
 
 
- const gCity = d3.mean(gData, d => d.AverageCityMPG))
- const gHighway = d3.mean(gData, d => d.AverageHighwayMPG))
- const dCity = d3.mean(dData, d => d.AverageCityMPG))
- const dHighway = d3.mean(dData, d => d.AverageHighwayMPG))
- const eCity = d3.mean(eData, d => d.AverageCityMPG))
- const eHighway = d3.mean(eData, d => d.AverageHighwayMPG))
+ const gCity = d3.mean(gData, d => d.AverageCityMPG));
+ const gHighway = d3.mean(gData, d => d.AverageHighwayMPG));
+ const dCity = d3.mean(dData, d => d.AverageCityMPG));
+ const dHighway = d3.mean(dData, d => d.AverageHighwayMPG));
+ const eCity = d3.mean(eData, d => d.AverageCityMPG));
+ const eHighway = d3.mean(eData, d => d.AverageHighwayMPG));
 
 
 d3.select('svg')
