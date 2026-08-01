@@ -24,18 +24,20 @@ const annotations = [{
   note: {
     label: "City MPG: 150    Highway MPG: 122",
     bgPadding: 20,
+    wrap: 200,
     title: "Hyundai Electric"
   },
   //can use x, y directly instead of data
   x: 450 + x(150),
   y: 150 + y(122),
   dy: 70,
-  dx: 0
+  dx: -70
 },
 {
   note: {
-    label: "More cylinders: larger circle",
+    label: "Cars with more cylinders are represented by larger circle",
     bgPadding: 20,
+    wrap: 200,
     title: "Engine Cylinder Count"
   },
   //can use x, y directly instead of data
@@ -46,14 +48,15 @@ const annotations = [{
 },
 {
   note: {
-    label: "City: 10 Highway: 17",
+    label: "City MPG: 10 Highway MPG: 17",
     bgPadding: 20,
+    wrap: 200,
     title: "Lamborghini Gasoline"
   },
   //can use x, y directly instead of data
   x: 450 + x(10),
   y: 150 + y(17),
-  dy: 45,
+  dy: 30,
   dx: 70
 }                     
 ];
