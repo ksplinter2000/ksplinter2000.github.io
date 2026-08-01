@@ -86,10 +86,19 @@ d3.select('svg')
 d3.select('svg')
  .append("text")
     .attr("class", "x label")
-    .attr("text-anchor", "end")
-    .attr("x", 450)
+    .attr("text-anchor", "start")
+    .attr("x", 550)
     .attr("y", 800)
-    .text("income per capita, inflation-adjusted (dollars)");
+    .text("Average Miles Per Gallon (City Driving)");
+
+ d3.select('svg')
+ .append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "start")
+    .attr("y", 150)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("Average Miles Per Gallon (City Driving)");
 
 const xAxis = d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
