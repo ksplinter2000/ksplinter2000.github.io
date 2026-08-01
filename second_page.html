@@ -53,9 +53,10 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(gCity)})
    .attr("cy", function(d,i) {return y(gHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(gData, d => d.EngineCylinders))))})
+   .style("fill", "green")
    .append("title")
    .text(d => `Fuel: Gasoline   City: ${gCity}   Highway: ${gHighway}`)
-   .style("fill", "green");
+   ;
 
   d3.select('svg')
  .append('g')
@@ -64,9 +65,10 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(dCity)})
    .attr("cy", function(d,i) {return y(dHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(dData, d => d.EngineCylinders))))})
+   .style("fill", "black")
    .append("title")
    .text(d => `Fuel: Diesel   City: ${dCity}   Highway: ${dHighway}`)
-   .style("fill", "black");
+   ;
 
   d3.select('svg')
  .append('g')
@@ -75,9 +77,10 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(eCity)})
    .attr("cy", function(d,i) {return y(eHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(eData, d => d.EngineCylinders))))})
+   .style("fill", "red")
    .append("title")
    .text(d => `Fuel: Electric   City: ${eCity}   Highway: ${eHighway}`)
-   .style("fill", "red");
+   ;
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
