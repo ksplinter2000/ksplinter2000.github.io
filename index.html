@@ -24,14 +24,14 @@ const annotations = [{
   note: {
     label: "City MPG: 150    Highway MPG: 122",
     bgPadding: 20,
-    wrap: 200,
+    wrap: 125,
     title: "Hyundai Electric"
   },
   //can use x, y directly instead of data
   x: 450 + x(150),
   y: 150 + y(122),
-  dy: 70,
-  dx: -70
+  dy: 100,
+  dx: -35
 },
 {
   note: {
@@ -50,7 +50,7 @@ const annotations = [{
   note: {
     label: "City MPG: 10 Highway MPG: 17",
     bgPadding: 20,
-    wrap: 200,
+    wrap: 125,
     title: "Lamborghini Gasoline"
   },
   //can use x, y directly instead of data
@@ -91,7 +91,7 @@ d3.select('svg')
     .attr("class", "x label")
     .attr("text-anchor", "start")
     .attr("x", 625)
-    .attr("y", 600)
+    .attr("y", 800)
     .text("Average Miles Per Gallon (City Driving)");
 
  d3.select('svg')
@@ -99,7 +99,7 @@ d3.select('svg')
     .attr("class", "y label")
     .attr("text-anchor", "end")
     .attr("x", 325)
-    .attr("y", 600)
+    .attr("y", 450)
     .text("Average Miles Per Gallon (Highway Driving)");
 
 const xAxis = d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
