@@ -15,12 +15,7 @@ async function init() {
  const gData = data.filter(d => d.Fuel === 'Gasoline');
  const dData = data.filter(d => d.Fuel === 'Diesel');
  const eData = data.filter(d => d.Fuel === 'Electricity');
- const gCity = d3.mean(gData, d => d.AverageCityMPG))
- const gHighway = d3.mean(gData, d => d.AverageHighwayMPG))
- const dCity = d3.mean(dData, d => d.AverageCityMPG))
- const dHighway = d3.mean(dData, d => d.AverageHighwayMPG))
- const eCity = d3.mean(eData, d => d.AverageCityMPG))
- const eHighway = d3.mean(eData, d => d.AverageHighwayMPG))
+ 
   
 const x = d3.scaleLog()
  .domain([10,150])
@@ -29,6 +24,13 @@ const y = d3.scaleLog()
  .domain([10,150])
  .range([600,0]);
 
+
+ const gCity = d3.mean(gData, d => d.AverageCityMPG))
+ const gHighway = d3.mean(gData, d => d.AverageHighwayMPG))
+ const dCity = d3.mean(dData, d => d.AverageCityMPG))
+ const dHighway = d3.mean(dData, d => d.AverageHighwayMPG))
+ const eCity = d3.mean(eData, d => d.AverageCityMPG))
+ const eHighway = d3.mean(eData, d => d.AverageHighwayMPG))
 
 
 d3.select('svg')
@@ -52,8 +54,8 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(gCity)})
    .attr("cy", function(d,i) {return y(gHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(gData, d => d.EngineCylinders))))})
-   .append("title")
-   .text(d => `Fuel: Gasoline   City: ${gCity}   Highway: ${gHighway}`)
+   //.append("title")
+   //.text(d => `Fuel: Gasoline   City: ${gCity}   Highway: ${gHighway}`)
    .style("fill", "green")  
   ;
 
@@ -64,8 +66,8 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(dCity)})
    .attr("cy", function(d,i) {return y(dHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(dData, d => d.EngineCylinders))))})
-   .append("title")
-   .text(d => `Fuel: Diesel   City: ${dCity}   Highway: ${dHighway}`)
+   //.append("title")
+   //.text(d => `Fuel: Diesel   City: ${dCity}   Highway: ${dHighway}`)
    .style("fill", "black");
 
   d3.select('svg')
@@ -75,8 +77,8 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(eCity)})
    .attr("cy", function(d,i) {return y(eHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(eData, d => d.EngineCylinders))))})
-   .append("title")
-   .text(d => `Fuel: Electric   City: ${eCity}   Highway: ${eHighway}`)
+   //.append("title")
+   //.text(d => `Fuel: Electric   City: ${eCity}   Highway: ${eHighway}`)
    .style("fill", "red");
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
