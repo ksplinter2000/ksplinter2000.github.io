@@ -15,6 +15,13 @@ async function init() {
  const gData = data.filter(d => d.Fuel === 'Gasoline');
  const dData = data.filter(d => d.Fuel === 'Diesel');
  const eData = data.filter(d => d.Fuel === 'Electricity');
+ const gCity = d3.mean(gData, d => d.AverageCityMPG))
+ const gHighway = d3.mean(gData, d => d.AverageHighwayMPG))
+ const dCity = d3.mean(dData, d => d.AverageCityMPG))
+ const dHighway = d3.mean(dData, d => d.AverageHighwayMPG))
+ const eCity = d3.mean(eData, d => d.AverageCityMPG))
+ const eHighway = d3.mean(eData, d => d.AverageHighwayMPG))
+  
 const x = d3.scaleLog()
  .domain([10,150])
  .range([0,600]);
@@ -42,11 +49,11 @@ d3.select('svg')
  .append('g')
   .attr("transform","translate(450,50)")
   .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(gData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(gData, d => d.AverageHighwayMPG))})
+   .attr("cx", function(d,i) {return x(gCity)})
+   .attr("cy", function(d,i) {return y(gHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(gData, d => d.EngineCylinders))))})
    .append("title")
-   .text(d => `Fuel: Gasoline   City: ${d3.mean(gData, d => d.AverageCityMPG))}   Highway: ${d3.mean(gData, d => d.AverageHighwayMPG))}`)
+   .text(d => `Fuel: Gasoline   City: ${gCity}   Highway: ${gHighway}`)
    .style("fill", "green")  
   ;
 
@@ -54,22 +61,22 @@ d3.select('svg')
  .append('g')
   .attr("transform","translate(450,50)")
   .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(dData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(dData, d => d.AverageHighwayMPG))})
+   .attr("cx", function(d,i) {return x(dCity)})
+   .attr("cy", function(d,i) {return y(dHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(dData, d => d.EngineCylinders))))})
    .append("title")
-   .text(d => `Fuel: Diesel   City: ${d3.mean(dData, d => d.AverageCityMPG))}   Highway: ${d3.mean(dData, d => d.AverageHighwayMPG))}`)
+   .text(d => `Fuel: Diesel   City: ${dCity}   Highway: ${dHighway}`)
    .style("fill", "black");
 
   d3.select('svg')
  .append('g')
   .attr("transform","translate(450,50)")
   .append("circle")
-   .attr("cx", function(d,i) {return x(d3.mean(eData, d => d.AverageCityMPG))})
-   .attr("cy", function(d,i) {return y(d3.mean(eData, d => d.AverageHighwayMPG))})
+   .attr("cx", function(d,i) {return x(eCity)})
+   .attr("cy", function(d,i) {return y(eHighway)})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(eData, d => d.EngineCylinders))))})
    .append("title")
-   .text(d => `Fuel: Electric   City: ${d3.mean(eData, d => d.AverageCityMPG))}   Highway: ${d3.mean(eData, d => d.AverageHighwayMPG))}`)
+   .text(d => `Fuel: Electric   City: ${eCity}   Highway: ${eHighway}`)
    .style("fill", "red");
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
@@ -96,8 +103,8 @@ const annotations = [{
     title: "Average Electric Motor"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(eData, d => d.AverageCityMPG)),
-  y: 50 + y(d3.mean(eData, d => d.AverageHighwayMPG)),
+  x: 450 + x(eCity),
+  y: 50 + y(eHighway),
   dy: 80,
   dx: 0
 },
@@ -109,8 +116,8 @@ const annotations = [{
     title: "Average Gas Motor"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(gData, d => d.AverageCityMPG)),
-  y: 50 + y(d3.mean(gData, d => d.AverageHighwayMPG)),
+  x: 450 + x(gCity),
+  y: 50 + y(gHighway),
   dy: 137,
   dx: 80
 },
@@ -122,8 +129,8 @@ const annotations = [{
     title: "Average Diesel Motor"
   },
   //can use x, y directly instead of data
-  x: 450 + x(d3.mean(dData, d => d.AverageCityMPG)),
-  y: 50 + y(d3.mean(dData, d => d.AverageHighwayMPG)),
+  x: 450 + x(dCity),
+  y: 50 + y(dHighway),
   dy: 30,
   dx: 120
 }                     
