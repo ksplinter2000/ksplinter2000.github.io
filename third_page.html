@@ -35,6 +35,31 @@ d3.select('svg')
    .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
    .style("fill", "green");
 
+d3.select('svg')
+ .append('g')
+  .attr("transform","translate(450,50)")
+  .selectAll("circle")
+  .data(dData)
+  .enter()
+  .append("circle")
+   .attr("cx", function(d,i) {return x(d.AverageCityMPG)})
+   .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
+   .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
+   .style("fill", "black");
+
+  
+d3.select('svg')
+ .append('g')
+  .attr("transform","translate(450,50)")
+  .selectAll("circle")
+  .data(eData)
+  .enter()
+  .append("circle")
+   .attr("cx", function(d,i) {return x(d.AverageCityMPG)})
+   .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
+   .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
+   .style("fill", "red");
+
   
  //d3.select('svg')
  //.append('g')
