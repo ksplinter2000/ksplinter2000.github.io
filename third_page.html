@@ -86,10 +86,10 @@ d3.select('svg')
 
 const annotations = [{
   note: {
-    label: "Substantially Higher Efficency than Other Fuels",
+    label: "Almost All Average Better MPG in City",
     bgPadding: 20,
     wrap: 200,
-    title: "Average Electric Motor"
+    title: "Electric Motors"
   },
   //can use x, y directly instead of data
   x: 450 + x(d3.mean(eData, d => d.AverageCityMPG)),
@@ -99,29 +99,16 @@ const annotations = [{
 },
 {
   note: {
-    label: "Lowest Efficiency Across Fuel Types",
+    label: "Vast Majority Average Better MPG on Highway",
     bgPadding: 20,
     wrap: 200,
-    title: "Average Gas Motor"
+    title: "Gas and Diesel Motors"
   },
   //can use x, y directly instead of data
   x: 450 + x(d3.mean(gData, d => d.AverageCityMPG)),
   y: 50 + y(d3.mean(gData, d => d.AverageHighwayMPG)),
   dy: 137,
   dx: 80
-},
-{
-  note: {
-    label: "More Efficient than Gasoline, but Far Below Electric",
-    bgPadding: 20,
-    wrap: 200,
-    title: "Average Diesel Motor"
-  },
-  //can use x, y directly instead of data
-  x: 450 + x(d3.mean(dData, d => d.AverageCityMPG)),
-  y: 50 + y(d3.mean(dData, d => d.AverageHighwayMPG)),
-  dy: 30,
-  dx: 120
 }                     
 ];
 
