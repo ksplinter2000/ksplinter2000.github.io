@@ -146,6 +146,17 @@ d3.select('svg')
     .attr("x", 325)
     .attr("y", 350)
     .text("Average Miles Per Gallon (Highway Driving)");
+
+  d3.select('svg')
+  .append("line")
+    .attr("x1", x(10))
+    .attr("y1", y(10))
+    .attr("x2", x(150))
+    .attr("y2", y(150))
+    .attr("stroke", "#999")
+    .attr("stroke-width", 1.5)
+    .attr("stroke-dasharray", "4"); // Optional dashed style
+   
  
 }
 </script>
