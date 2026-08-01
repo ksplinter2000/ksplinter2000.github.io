@@ -31,7 +31,7 @@ const annotations = [{
   },
   //can use x, y directly instead of data
   x: 450 + x(150),
-  y: 150 + y(122),
+  y: 50 + y(122),
   dy: 100,
   dx: -35
 },
@@ -57,7 +57,7 @@ const annotations = [{
   },
   //can use x, y directly instead of data
   x: 450 + x(10),
-  y: 150 + y(17),
+  y: 50 + y(17),
   dy: 30,
   dx: 70
 }                     
@@ -85,7 +85,7 @@ const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s
 
 d3.select('svg')
 .append('g')
- .attr("transform","translate(450,150)")
+ .attr("transform","translate(450,50)")
  .call(yAxis);
 
 d3.select('svg')
@@ -93,7 +93,7 @@ d3.select('svg')
     .attr("class", "x label")
     .attr("text-anchor", "start")
     .attr("x", 625)
-    .attr("y", 800)
+    .attr("y", 700)
     .text("Average Miles Per Gallon (City Driving)");
 
  d3.select('svg')
@@ -101,14 +101,14 @@ d3.select('svg')
     .attr("class", "y label")
     .attr("text-anchor", "end")
     .attr("x", 325)
-    .attr("y", 450)
+    .attr("y", 350)
     .text("Average Miles Per Gallon (Highway Driving)");
 
 const xAxis = d3.axisBottom(x).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
 
 d3.select('svg')
 .append('g')
- .attr("transform","translate(450,750)")
+ .attr("transform","translate(450,650)")
  .call(xAxis);
 
 
