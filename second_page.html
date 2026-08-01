@@ -33,7 +33,10 @@ d3.select('svg')
   .append("circle")
    .attr("cx", function(d,i) {return x(d.AverageCityMPG)})
    .attr("cy", function(d,i) {return y(d.AverageHighwayMPG)})
-   .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))});
+   .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
+   .append("title")
+   .text(d => `Make: ${d.Make}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`) 
+ ;
 
  d3.select('svg')
  .append('g')
@@ -42,7 +45,10 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(d3.mean(gData, d => d.AverageCityMPG))})
    .attr("cy", function(d,i) {return y(d3.mean(gData, d => d.AverageHighwayMPG))})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(gData, d => d.EngineCylinders))))})
-   .style("fill", "green");
+   .append("title")
+   .text(d => `Fuel: Gasoline   City: ${d3.mean(gData, d => d.AverageCityMPG))}   Highway: ${d3.mean(gData, d => d.AverageHighwayMPG))}`)
+   .style("fill", "green")  
+  ;
 
   d3.select('svg')
  .append('g')
@@ -51,6 +57,8 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(d3.mean(dData, d => d.AverageCityMPG))})
    .attr("cy", function(d,i) {return y(d3.mean(dData, d => d.AverageHighwayMPG))})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(dData, d => d.EngineCylinders))))})
+   .append("title")
+   .text(d => `Fuel: Diesel   City: ${d3.mean(dData, d => d.AverageCityMPG))}   Highway: ${d3.mean(dData, d => d.AverageHighwayMPG))}`)
    .style("fill", "black");
 
   d3.select('svg')
@@ -60,6 +68,8 @@ d3.select('svg')
    .attr("cx", function(d,i) {return x(d3.mean(eData, d => d.AverageCityMPG))})
    .attr("cy", function(d,i) {return y(d3.mean(eData, d => d.AverageHighwayMPG))})
    .attr("r", function(d,i) {return 4+(2*Number((d3.mean(eData, d => d.EngineCylinders))))})
+   .append("title")
+   .text(d => `Fuel: Electric   City: ${d3.mean(eData, d => d.AverageCityMPG))}   Highway: ${d3.mean(eData, d => d.AverageHighwayMPG))}`)
    .style("fill", "red");
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
