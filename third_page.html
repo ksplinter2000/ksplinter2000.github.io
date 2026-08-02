@@ -38,7 +38,7 @@ d3.select('svg')
    .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
    .style("fill", "green")
    .append("title")
-   .text(d => `Make: ${d.Make}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
+   .text(d => `Make: ${d.Make}   Fuel: ${d.Fuel}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
 
 d3.select('svg')
  .append('g')
@@ -52,7 +52,7 @@ d3.select('svg')
    .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
    .style("fill", "grey")
    .append("title")
-   .text(d => `Make: ${d.Make}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
+   .text(d => `Make: ${d.Make}   Fuel: ${d.Fuel}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
 
   
 d3.select('svg')
