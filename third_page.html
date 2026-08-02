@@ -67,7 +67,7 @@ d3.select('svg')
    .attr("r", function(d,i) {return 4+(2*Number((d.EngineCylinders)))})
    .style("fill", "red")
    .append("title")
-   .text(d => `Make: ${d.Make}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
+   .text(d => `Make: ${d.Make}   Fuel: ${d.Fuel}   City: ${d.AverageCityMPG}   Highway: ${d.AverageHighwayMPG}`);
 
 
 const yAxis = d3.axisLeft(y).tickValues([10,20,50,100]).tickFormat(d3.format("~s"))
